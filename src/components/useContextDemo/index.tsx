@@ -1,4 +1,4 @@
-import React, { useState, FC, createContext, useMemo } from 'react';
+import React, { useState, FC, createContext } from 'react';
 import { Button } from 'antd';
 import Child from './child';
 
@@ -7,16 +7,11 @@ const defaultConfig = { front: '1', back: 0.2 };
 const ColorContext = createContext(defaultConfig);
 
 const ContextDemo: FC = () => {
-  const [value, setValue] = useState(() => {
-    return defaultConfig;
-  });
+  const [value, setValue] = useState(defaultConfig);
   const [num, setNum] = useState(0);
-  const memoValue = useMemo(() => {
-    return value;
-  }, [value]);
   console.log('ContextDemo', value, num);
   return (
-    <ColorContext.Provider value={memoValue}>
+    <ColorContext.Provider value={value}>
       <div>{value.back}</div>
       <Button
         onClick={() =>
