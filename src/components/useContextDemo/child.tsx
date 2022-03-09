@@ -4,12 +4,12 @@ import Son from './son';
 import son from './son';
 
 const Child: FC = () => {
-  // const color = useContext(ColorContext);
+  const color = useContext(ColorContext);
   // const [value, setValue] = useState(0);
-  // console.log('child----color', color);
+  console.log('child----color', color);
   return (
     <ColorContext.Consumer>
-      {({ value }) => <Son value={son} />}
+      {({ color, onChange }) => <Son value={color} />}
     </ColorContext.Consumer>
   );
 };

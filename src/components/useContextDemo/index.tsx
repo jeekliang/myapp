@@ -4,15 +4,21 @@ import Child from './child';
 
 const defaultConfig = { front: '1', back: 0.2 };
 
-const ColorContext = createContext(defaultConfig);
+const ColorContext = createContext({
+  color: 'red',
+  onChange: () => console.log('onChange'),
+});
 
 const ContextDemo: FC = () => {
-  const [value, setValue] = useState(defaultConfig);
+  const [value, setValue] = useState({
+    color: 'red',
+    onChange: () => console.log('onChange'),
+  });
   const [num, setNum] = useState(0);
   console.log('ContextDemo', value, num);
   return (
     <ColorContext.Provider value={value}>
-      <div>{value.back}</div>
+      <div>{value.color}</div>
       <Button
         onClick={() =>
           setNum((preValue) => {
